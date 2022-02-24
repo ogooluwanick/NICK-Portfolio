@@ -17,15 +17,22 @@ import redux from '../assets/redux.png';
 import sass from '../assets/sass.png';
 import typescript from '../assets/typescript.png';
 import vue from '../assets/vue.png';
+import photoshop from '../assets/photoshop.png';
+import Adobe_Animate from '../assets/Adobe-Animate.png';
+
 
 import about01 from '../assets/about01.png';
 import about02 from '../assets/about02.png';
+import about02j from '../assets/about02.jpeg';
 import about03 from '../assets/about03.png';
+import about03j from '../assets/about03.jpeg';
+
 import about04 from '../assets/about04.png';
 
 import profile from '../assets/profile.png';
 import circle from '../assets/circle.svg';
 import logo from '../assets/logo.svg';
+import logopng from '../assets/logo.png';
 
 
 import adidas from '../assets/adidas.png';
@@ -58,11 +65,14 @@ export default {
   vue,
   about01,
   about02,
+  about02j,
   about03,
+  about03j,
   about04,
   profile,
   circle,
   logo,
+  logopng,
   adidas,
   amazon,
   asus,
@@ -70,4 +80,7 @@ export default {
   nb,
   skype,
   spotify,
+  photoshop,
+  Adobe_Animate
+
 };
