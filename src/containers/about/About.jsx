@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import { motion } from 'framer-motion'
 import "./About.scss"
+import AppWrap from '../../wrapper/AppWrap';
 
 import { urlFor, client } from '../../client';
 
@@ -22,7 +23,7 @@ const About = () => {
         I know 
         <span> Good Development </span>
         <br />
-        mean
+        means
         <br /> 
         <span> Good Business</span>
       </h2>
@@ -45,4 +46,4 @@ const About = () => {
   )
 }
 
-export default About
+export default AppWrap(About, "about") 
