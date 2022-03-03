@@ -1,4 +1,5 @@
 import email from '../assets/email.png';
+import gmail from '../assets/gmail.png';
 import mobile from '../assets/mobile.png';
 import api from '../assets/api.png';
 import cpp from '../assets/cpp.png';
@@ -46,6 +47,7 @@ import spotify from '../assets/spotify.png';
 //eslint-disable-next-line
 export default {
   email,
+  gmail,
   mobile,
   api,
   cpp,

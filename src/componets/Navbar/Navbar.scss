@@ -108,6 +108,12 @@
         width: 70%;
         height: 70%;
         color: var(--white-color);
+        transition:all .3s ease-in-out ;
+
+        &:hover{
+            color: white;
+            transform: rotate(180deg);
+        }
     }
 
     div{
@@ -140,6 +146,12 @@
             height: 35px;
             color: var(--secondary-color);
             margin: 0.5rem 1rem;
+            transition: all .3s ease-in-out;
+
+            &:hover{
+                color: var(--primary-color);
+                transform: rotate(90deg);
+            }
         }
 
         ul{
