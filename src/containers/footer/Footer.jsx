@@ -7,8 +7,8 @@ import {images } from "../../constants/constants"
 import {client } from '../../client';
 import {motion} from "framer-motion"
 
-import CircleLoader from "react-spinners/CircleLoader";
 
+import CircleLoader from "react-spinners/CircleLoader";
 import validator from 'validator'
 
 const Footer = () => {
@@ -98,6 +98,10 @@ const Footer = () => {
         <div className="app__footer-card">
           <img src={images.mobile} alt="mobileIMG" />
           <a href="tel: +234 912 101 7814" className='p-text'>+234 912 101 7814</a>
+        </div>
+        <div className="app__footer-card">
+          <img src={images.cvicon} alt="CvIMG" />
+          <a href={images.ogoCV} download className='p-text'>Download CV</a>
         </div>
       </div>
 

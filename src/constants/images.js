@@ -20,6 +20,8 @@ import typescript from '../assets/typescript.png';
 import vue from '../assets/vue.png';
 import photoshop from '../assets/photoshop.png';
 import Adobe_Animate from '../assets/Adobe-Animate.png';
+import ogoCV from '../assets/01_Ogooluwa_Olutimilehin_CV.pdf';
+
 
 
 import about01 from '../assets/about01.png';
@@ -34,6 +36,7 @@ import profile from '../assets/profile.png';
 import circle from '../assets/circle.svg';
 import logo from '../assets/logo.svg';
 import logopng from '../assets/logo.png';
+import cvicon from "../assets/cvicon.png"
 
 
 import adidas from '../assets/adidas.png';
@@ -84,6 +87,8 @@ export default {
   skype,
   spotify,
   photoshop,
-  Adobe_Animate
+  Adobe_Animate,
+  cvicon,
+  ogoCV
 
 };
