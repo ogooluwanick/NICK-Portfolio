@@ -12,7 +12,6 @@ const Navbar = () => {
         <a href="#home">
           <img src={images.logopng}  alt="logo" />
         </a>
-        
       </div>
       <ul className='app__navbar-links'>
         {
