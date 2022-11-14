@@ -5,22 +5,21 @@ import { AiFillLinkedin } from 'react-icons/ai'
 const SocialMedia = () => {
   return (
     <div className='app__social'>
-        <div>
           <a href="https://github.com/ogooluwanick" target="_blank" rel="noreferrer" >
-           <BsGithub/>
+                <div>
+                        <BsGithub/>
+                </div>
           </a>
-           
-        </div>
-        <div>
           <a href="https://www.linkedin.com/in/ogooluwa-olutimilehin"  target="_blank" rel="noreferrer" >
-              <AiFillLinkedin/>
+                <div>
+                        <AiFillLinkedin/>
+                </div>
           </a>
-        </div>
-        <div>
           <a href=" https://www.instagram.com/extremenick_"  target="_blank" rel="noreferrer" >
-            <BsInstagram/>
+                <div>
+                        <BsInstagram/>
+                </div>
           </a>
-        </div>
     </div>
   )
 }
