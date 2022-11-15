@@ -86,6 +86,65 @@
   }
 }
 
+//experiment
+
+.hamburger{
+        cursor: pointer;
+        width: 35px;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        transition: all .3s ease-in-out;
+        position: relative;
+        background-color:var(--secondary-color);
+        
+}
+
+.hamburger-2,.hamburger-3,.hamburger-1{
+        position: absolute;
+        top: 25%;
+        left: 15%;
+        width: 24px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: var(--white-color);
+        transform: rotate(0);
+        transition: all 0.5s;
+}
+
+.hamburger-2{
+        transform: translateY(7px);
+}
+.hamburger-3{
+        transform: translateY(14px);
+}
+
+
+
+.open{
+        transform: rotate(90deg);
+        transform: translateY(0px);
+}
+
+.open .hamburger-1{
+        transform: rotate(45deg) translateY(6px) translate(6px);
+}
+
+.open .hamburger-2{
+        display: none;
+}
+
+.open .hamburger-3{
+        transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+//experiment
+
+
+
+
+
+
+
 .app__navbar-menu {
   width: 35px;
   height: 35px;
@@ -114,12 +173,11 @@
     top: 0;
     bottom: 0;
     right: 0;
-    left: 0;
     z-index: 5;
 
     padding: 1rem;
 
-    width: 80%;
+    width: 60%;
     height: 100vh;
     display: flex;
     justify-content: flex-end;
@@ -137,7 +195,7 @@
       width: 35px;
       height: 35px;
       color: var(--secondary-color);
-      margin: 0.5rem 1rem;
+      margin-top: 0.5rem;
       transition: all 0.3s ease-in-out;
 
       &:hover {
