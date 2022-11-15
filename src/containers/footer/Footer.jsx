@@ -91,18 +91,24 @@ const Footer = () => {
     <div className='app__footer'> 
       <h2 className="head-text">Please feel free to reach out 🌹 </h2>
       <div className="app__footer-cards">
-        <div className="app__footer-card">
-          <img src={images.gmail} alt="mailIMG" />
-          <a href="mailto:ogooluwanick@gmail.com" className='p-text'>ogooluwanick@gmail.com</a>
-        </div>
-        <div className="app__footer-card">
-          <img src={images.mobile} alt="mobileIMG" />
-          <a href="tel: +234 912 101 7814" className='p-text'>+234 912 101 7814</a>
-        </div>
-        <div className="app__footer-card">
-          <img src={images.cvicon} alt="CvIMG" />
-          <a href={images.ogoCV} download className='p-text'>Download CV</a>
-        </div>
+        <a href="mailto:ogooluwanick@gmail.com" className='app__footer-cards-links p-text'>
+                <div className="app__footer-card">
+                        <img src={images.gmail} alt="mailIMG" />
+                        ogooluwanick@gmail.com
+                </div>
+        </a>
+        <a href="tel: +234 912 101 7814" className='app__footer-cards-links p-text'>
+                <div className="app__footer-card">
+                <img src={images.mobile} alt="mobileIMG" />
+                +234 912 101 7814
+                </div>
+        </a>
+        <a href={images.ogoCV} download className='app__footer-cards-links p-text'>
+                <div className="app__footer-card">
+                <img src={images.cvicon} alt="CvIMG" />
+                Download CV
+                </div>
+        </a>
       </div>
 
     
