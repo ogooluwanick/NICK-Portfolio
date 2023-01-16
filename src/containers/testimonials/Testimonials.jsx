@@ -3,7 +3,7 @@ import "./Testimonials.scss"
 import {HiChevronLeft,HiChevronRight} from "react-icons/hi"
 
 import AppWrap from "../../wrapper/AppWrap"
-import {motion} from "framer-motion"
+import {AnimatePresence, motion} from "framer-motion"
 import { urlFor, client } from '../../client';
 import MotionWrap from '../../wrapper/MotionWrap'
 
@@ -36,16 +36,20 @@ const Testimonials = () => {
       {
         testimonials.length && (
           <>
-            <div className="app__testimonial-item app__flex">
-              <img src={urlFor(testimonials[currentIndex].imageurl)} alt={testimonials.company} />
-              <div className="app__testimonial-content">
-                <p className="p-text">{testimonials[currentIndex].feedback}</p>
-                <div>
-                  <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
-                  <h5 className="p-text">{testimonials[currentIndex].company}</h5>
+          <AnimatePresence exitBeforeEnter>
+
+                <motion.div key={currentIndex} className="app__testimonial-item app__flex" initial={{ opacity:0, y: "10%" }} animate={{ opacity: 1 , y: "0"}} exit={{ opacity: 0, y: "10%"}} transition={{ type: "spring", bounce: 0.3, duration: 0.2 }}>
+                <img src={urlFor(testimonials[currentIndex].imageurl)} alt={testimonials.company} />
+                <div className="app__testimonial-content">
+                        <p className="p-text">{testimonials[currentIndex].feedback} </p>
+                        <div>
+                        <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
+                        <h5 className="p-text">{testimonials[currentIndex].company}</h5>
+                        </div>
                 </div>
-              </div>
-            </div>
+                </motion.div>
+          </AnimatePresence>
+
 
 
             <div className="app__testimonial-btns app__flex">

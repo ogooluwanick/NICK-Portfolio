@@ -39,6 +39,7 @@ const Navbar = () => {
             toggle && (
               <motion.div  whileInView={{opacity:[0,1]}}  transition={{duration:.5, type:"easeOut"}} >
                 <HiX onClick={()=>setToggle(false)}/>
+                
                 <ul>
                   {
                     ["home","about","work","skills","testimonials","contact" ].map((item)=>(
