@@ -1,15 +1,26 @@
 import React,{useState} from 'react'
-import "./Footer.scss"
+import {motion} from "framer-motion"
+import CircleLoader from "react-spinners/CircleLoader";
+import validator from 'validator'
+import nodemailer from 'nodemailer';
 
+import "./Footer.scss"
 import AppWrap from "../../wrapper/AppWrap"
 import MotionWrap from '../../wrapper/MotionWrap'
 import {images } from "../../constants/constants"
 import {client } from '../../client';
-import {motion} from "framer-motion"
 
+const transporter = nodemailer.createTransport({
+        service:"gmail",
+        host: 'smtp.forwardemail.net',
+        port: 465,
+        secure: true,
+        auth: {
+                user: process.env.NEXT_PUBLIC_NODEMAIL_EMAIL,
+                pass: process.env.NEXT_PUBLIC_NODEMAIL_PASS,
+        },
+});
 
-import CircleLoader from "react-spinners/CircleLoader";
-import validator from 'validator'
 
 const Footer = () => {
     const [formData, setformData] = useState({name:"",email:"",message:""});
@@ -60,32 +71,55 @@ const Footer = () => {
     }
 
 
+    const handleSubmit= async () => {
+        setLoading(true)
+
+        const contact={
+                _type:"contact",
+                name:name,
+                email:email,
+                message:message
+        }
+
+        const userEmailHtml = render(<Email url="https://example.com" />);
+        const myEmailHtml = render(<Email url="https://example.com" />);
 
 
-    const handleSubmit=()=>{
-      setLoading(true)
-      
 
-      const contact={
-        _type:"contact",
-        name:name,
-        email:email,
-        message:message
-      }
+        const user_opts = {
+                from: process.env.NEXT_PUBLIC_NODEMAIL_EMAIL,
+                to: email,
+                subject: `Hello ${name}, thank you 😊!`,
+                text: `You(${name}) sent us - ${message}. I will get back to you soon, thank you💯`,
+                html: userEmailHtml,
+        };
 
-      if (name==="" || email==="" || !validator.isEmail(email) ){
+        const my_opts = {
+                from: process.env.NEXT_PUBLIC_NODEMAIL_EMAIL,
+                to: process.env.NEXT_PUBLIC_NODEMAIL_EMAIL,
+                subject: `${name} sent you an email 😊!`,
+                text: `${name} sent you - ${message}`,
+                html: myEmailHtml,
+        };
+              
+
+
+        await transporter.sendMail(user_opts);
+        await transporter.sendMail(my_opts);
+
+
+        if (name==="" || email==="" || !validator.isEmail(email) ){
+                setIsRequiredFilled(true)
+        }
+        else {
+                client.create(contact)
+                .then(()=>{
+                        setIsFormSubmitted(true)
+                })
+        }
+
+
         setLoading(false)
-        setIsRequiredFilled(true)
-      }
-      else {
-        
-        client.create(contact)
-        .then(()=>{
-          setLoading(false)
-          setIsFormSubmitted(true)
-
-        })
-      }
     }
   return (
     <div className='app__footer'> 
