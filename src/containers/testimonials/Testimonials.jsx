@@ -34,7 +34,7 @@ const Testimonials = () => {
   return (
     <div>
       {
-        testimonials.length && (
+        testimonials.length ? (
           <>
           <AnimatePresence exitBeforeEnter>
 
@@ -62,6 +62,7 @@ const Testimonials = () => {
             </div>
           </>
         )
+        :""
       }
 
       <div className="app__testimonial-brands app__flex">
