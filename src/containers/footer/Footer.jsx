@@ -80,7 +80,7 @@ const Footer = () => {
                 await client.create(contact)
 
                 
-                await axios.post("http://localhost:5005/api/ogo_portfolio/contact_us_email",{
+                await axios.post("https://distinct-lamb-bedclothes.cyclic.app/api/ogo_portfolio/contact_us_email",{
                         contact
                 })
         
