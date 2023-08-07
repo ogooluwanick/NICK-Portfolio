@@ -99,10 +99,10 @@ const Footer = () => {
     <div className='app__footer'> 
       <h2 className="head-text">Please feel free to reach out 🌹 </h2>
       <div className="app__footer-cards">
-        <a href="mailto:ogooluwanick@gmail.com" className='app__footer-cards-links p-text'>
+        <a href="mailto:extremeworkbench@gmail.com" className='app__footer-cards-links p-text'>
                 <div className="app__footer-card">
                         <img src={images.gmail} alt="mailIMG" />
-                        ogooluwanick@gmail.com
+                        extremeworkbench@gmail.com
                 </div>
         </a>
         <a href="tel: +234 912 101 7814" className='app__footer-cards-links p-text'>
