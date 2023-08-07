@@ -8,7 +8,7 @@ import "./Footer.scss"
 import AppWrap from "../../wrapper/AppWrap"
 import MotionWrap from '../../wrapper/MotionWrap'
 import {images } from "../../constants/constants"
-import {client } from '../../client';
+// import {client } from '../../client';
 
 
 const Footer = () => {
