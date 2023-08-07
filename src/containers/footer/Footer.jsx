@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {motion} from "framer-motion"
 import CircleLoader from "react-spinners/CircleLoader";
 import validator from 'validator'
-import nodemailer from 'nodemailer';
+import axios from "axios"
 
 import "./Footer.scss"
 import AppWrap from "../../wrapper/AppWrap"
@@ -10,23 +10,12 @@ import MotionWrap from '../../wrapper/MotionWrap'
 import {images } from "../../constants/constants"
 import {client } from '../../client';
 
-const transporter = nodemailer.createTransport({
-        service:"gmail",
-        host: 'smtp.forwardemail.net',
-        port: 465,
-        secure: true,
-        auth: {
-                user: process.env.NEXT_PUBLIC_NODEMAIL_EMAIL,
-                pass: process.env.NEXT_PUBLIC_NODEMAIL_PASS,
-        },
-});
-
 
 const Footer = () => {
     const [formData, setformData] = useState({name:"",email:"",message:""});
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [isRequiredFilled, setIsRequiredFilled] = useState(false);
-
+    const [failedToSend, setFailedToSend] = useState(false)
 
     const [loading, setLoading] = useState(false);
 
@@ -72,6 +61,11 @@ const Footer = () => {
 
 
     const handleSubmit= async () => {
+
+        if (name==="" || email==="" || message==="" || !validator.isEmail(email) ){
+                return setIsRequiredFilled(true)
+        }
+
         setLoading(true)
 
         const contact={
@@ -81,43 +75,23 @@ const Footer = () => {
                 message:message
         }
 
-        const userEmailHtml = render(<Email url="https://example.com" />);
-        const myEmailHtml = render(<Email url="https://example.com" />);
+        try {
 
+                // await client.create(contact)
 
-
-        const user_opts = {
-                from: process.env.NEXT_PUBLIC_NODEMAIL_EMAIL,
-                to: email,
-                subject: `Hello ${name}, thank you 😊!`,
-                text: `You(${name}) sent us - ${message}. I will get back to you soon, thank you💯`,
-                html: userEmailHtml,
-        };
-
-        const my_opts = {
-                from: process.env.NEXT_PUBLIC_NODEMAIL_EMAIL,
-                to: process.env.NEXT_PUBLIC_NODEMAIL_EMAIL,
-                subject: `${name} sent you an email 😊!`,
-                text: `${name} sent you - ${message}`,
-                html: myEmailHtml,
-        };
-              
-
-
-        await transporter.sendMail(user_opts);
-        await transporter.sendMail(my_opts);
-
-
-        if (name==="" || email==="" || !validator.isEmail(email) ){
-                setIsRequiredFilled(true)
-        }
-        else {
-                client.create(contact)
-                .then(()=>{
-                        setIsFormSubmitted(true)
+                
+                await axios.post("http://localhost:5005/api/ogo_portfolio/contact_us_email",{
+                        contact
                 })
+        
+                        
+                setIsFormSubmitted(true)
+                setFailedToSend(false)
+        } 
+        catch (error) {
+                setFailedToSend(true)
+                setIsRequiredFilled(false)
         }
-
 
         setLoading(false)
     }
@@ -161,14 +135,20 @@ const Footer = () => {
             <textarea  className="p-text" name="message"  value={message} cols="30" rows="10" placeholder='Your Message...' onChange={handleChangeInput}></textarea>
           </div>
 
-          <button className='p-text' type='button' onClick={handleSubmit} >{loading?(<CircleLoader color={"#0c8ac1"}   size={30} className="CircleLoaderSVG" />) :"Send Message"}</button>
+          <button className='p-text' type='button' onClick={handleSubmit} >{loading?(<CircleLoader color={"#fff"}   size={30} className="CircleLoaderSVG" />) :"Send Message"}</button>
 
           {
-            isRequiredFilled && 
-             <motion.div whileInView={{y:[100,50,0],opacity:[0,0,1]}} transition={{duration:0.5}}>
-             <br />
-              <h3 className="head-text">Kindly fill form accurately!🙃</h3>
-            </motion.div>
+                isRequiredFilled ?
+                        <motion.div whileInView={{y:[100,50,0],opacity:[0,0,1]}} transition={{duration:0.5}}>
+                        <br />
+                        <h3 className="head-text">Kindly fill form accurately!🙃</h3>
+                        </motion.div>
+                : failedToSend ?
+                        <motion.div whileInView={{y:[100,50,0],opacity:[0,0,1]}} transition={{duration:0.5}}>
+                        <br />
+                        <h4 className="head-text" >Failed to send, Please try again. 🙏🏽</h4>
+                        </motion.div>
+                :""
           }
 
           </div>
