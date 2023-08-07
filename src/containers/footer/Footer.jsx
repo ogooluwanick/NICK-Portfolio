@@ -8,7 +8,7 @@ import "./Footer.scss"
 import AppWrap from "../../wrapper/AppWrap"
 import MotionWrap from '../../wrapper/MotionWrap'
 import {images } from "../../constants/constants"
-// import {client } from '../../client';
+import {client } from '../../client';
 
 
 const Footer = () => {
@@ -77,7 +77,7 @@ const Footer = () => {
 
         try {
 
-                // await client.create(contact)
+                await client.create(contact)
 
                 
                 await axios.post("http://localhost:5005/api/ogo_portfolio/contact_us_email",{
