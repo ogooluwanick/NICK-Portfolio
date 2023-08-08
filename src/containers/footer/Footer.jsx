@@ -9,6 +9,7 @@ import AppWrap from "../../wrapper/AppWrap"
 import MotionWrap from '../../wrapper/MotionWrap'
 import {images } from "../../constants/constants"
 import {client } from '../../client';
+import { Fireworks } from '../../constants/Fireworks';
 
 
 const Footer = () => {
@@ -87,6 +88,7 @@ const Footer = () => {
                         
                 setIsFormSubmitted(true)
                 setFailedToSend(false)
+                Fireworks()
         } 
         catch (error) {
                 setFailedToSend(true)
