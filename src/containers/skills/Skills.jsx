@@ -43,7 +43,7 @@ const Skills = () => {
             }
         </motion.div>
         <div className="app__skills-exp">
-          {experiences.sort((a,b)=> new Date(a._createdAt) - new Date(b._createdAt)).map((experience) => (
+          {experiences.sort((a,b)=> new Date(b._createdAt) - new Date(a._createdAt)).map((experience) => (
             <motion.div
               className="app__skills-exp-item"
               key={experience._id}
